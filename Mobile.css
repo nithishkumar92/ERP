@@ -1,0 +1,174 @@
+
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --primary-light: #e0e7ff;
+  --success: #10b981;
+  --danger: #ef4444;
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-400: #94a3b8;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-premium: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+}
+
+/* Base Overrides */
+body {
+  background-color: var(--slate-50);
+  color: var(--slate-900);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overscroll-behavior-y: contain;
+}
+
+/* Print Specific Styles */
+@media print {
+  body {
+    background: white !important;
+    padding: 2cm !important;
+  }
+  
+  nav, header, button, .print\:hidden {
+    display: none !important;
+  }
+
+  main {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .print\:p-0 {
+    padding: 0 !important;
+  }
+
+  #root {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .bg-white {
+    box-shadow: none !important;
+    border: 1px solid #f1f5f9 !important;
+  }
+
+  .bg-indigo-600 {
+    background-color: #4f46e5 !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* Premium Glass Effect */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* Safe Area Paddings for Modern Mobiles */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Radar Pulse Animation */
+@keyframes radar-pulse {
+  0% { transform: scale(0.6); opacity: 1; border-width: 4px; }
+  100% { transform: scale(2.2); opacity: 0; border-width: 1px; }
+}
+
+.radar-ring {
+  position: absolute;
+  border: 2px solid var(--primary);
+  border-radius: 9999px;
+  width: 100%;
+  height: 100%;
+  animation: radar-pulse 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.radar-ring:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.radar-ring:nth-child(3) {
+  animation-delay: 1.6s;
+}
+
+/* Button Interactions */
+button:active {
+  transform: scale(0.96);
+  transition: transform 0.1s ease-out;
+}
+
+/* Custom Scrollbar for Mobile Lists */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--slate-200);
+  border-radius: 10px;
+}
+
+/* Card Glide Entrance */
+.card-entrance {
+  animation: glide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes glide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Shimmer Effect for Loading States */
+.shimmer {
+  background: linear-gradient(90deg, #f1f5f9 25%, #f8fafc 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Form Styling Refinements */
+select, input {
+  font-size: 16px !important; /* Prevents iOS auto-zoom on focus */
+}
+
+/* Shake Animation for Errors */
+.shake-error {
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* Utility for custom heights */
+.py-4\.5 {
+  padding-top: 1.125rem;
+  padding-bottom: 1.125rem;
+}

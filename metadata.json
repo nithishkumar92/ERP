@@ -1,0 +1,8 @@
+{
+  "name": "ConstructPro Mobile ERP",
+  "description": "A high-performance mobile construction management app for team site attendance, advances, and reports with GPS-verified check-ins.",
+  "requestFramePermissions": [
+    "geolocation",
+    "camera"
+  ]
+}
